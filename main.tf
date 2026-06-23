@@ -4,28 +4,39 @@ module "rg" {
 }
 
 module "vnet" {
-  depends_on = [ module.rg ]
+  depends_on       = [module.rg]
   source           = "git::https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_virtual_network"
   virtual_networks = var.virtual_networks
 }
 
 module "subnet" {
-  depends_on = [ module.vnet ]
-  source  = "git::https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_subnet"
-  subnets = var.subnets
+  depends_on = [module.vnet]
+  source     = "git::https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_subnet"
+  subnets    = var.subnets
 }
 
 module "public_ip" {
-  depends_on = [ module.rg ]
-  source     = "git:://https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_public_ip"
+  depends_on = [module.rg]
+  source     = "git::https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_public_ip"
   public_ips = var.public_ips
+}
+
+
+module "avm-res-compute-virtualmachine" {
+  source  = "Azure/avm-res-compute-virtualmachine/azurerm"
+  version = "0.21.0"
+  name = "avm-res-compute-virtualmachine"
+  location = "East US"
+  resource_group_name = "dev-rg-01"
+  zone = "1"
+
 }
 
 # module "bastion_host" {
 #   depends_on = [ module.public_ip, module.subnet ]
 #   source        = "../../Modules/azurerm_bastion_host"
 #   bastion_hosts = var.bastion_hosts
-  
+
 # }
 
 # module "key_vault" {
