@@ -1,6 +1,7 @@
 module "rg" {
   source          = "git::https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_resource_group"
   resource_groups = var.resource_groups
+  
 }
 
 module "vnet" {

@@ -10,7 +10,7 @@ terraform {
 terraform {
   backend "azurerm" {
     resource_group_name  = "dkctfstate-rg"
-    storage_account_name = "dkctfstatestg6528"
+    storage_account_name = "dkctfstatestg6527"
     container_name       = "devtfstate"
     key                  = "dev.terraform.tfstate"    
   }
