@@ -1,17 +1,17 @@
 module "rg" {
-  source          = "git:://https://github.com/dkchcl/azure-resource-modules.git"
+  source          = "git::https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_resource_group"
   resource_groups = var.resource_groups
 }
 
 module "vnet" {
   depends_on = [ module.rg ]
-  source           = "git:://https://github.com/dkchcl/azure-resource-modules.git"
+  source           = "git::https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_virtual_network"
   virtual_networks = var.virtual_networks
 }
 
 module "subnet" {
   depends_on = [ module.vnet ]
-  source  = "git:://https://github.com/dkchcl/azure-resource-modules.git"
+  source  = "git::https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_subnet"
   subnets = var.subnets
 }
 
