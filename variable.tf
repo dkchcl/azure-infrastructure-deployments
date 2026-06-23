@@ -24,15 +24,15 @@ variable "subnets" {
   }))
 }
 
-# variable "public_ips" {
-#   type = map(object({
-#     name                = string
-#     resource_group_name = string
-#     location            = string
-#     allocation_method   = string
-#     sku                 = string
-#   }))
-# }
+variable "public_ips" {
+  type = map(object({
+    pip_name            = string
+    resource_group_name = string
+    location            = string
+    allocation_method   = string
+    sku                 = string
+  }))
+}
 
 # variable "bastion_hosts" {
 #   type = map(object({

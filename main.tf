@@ -1,7 +1,6 @@
 module "rg" {
   source          = "git::https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_resource_group"
   resource_groups = var.resource_groups
-  
 }
 
 module "vnet" {
@@ -16,11 +15,11 @@ module "subnet" {
   subnets = var.subnets
 }
 
-# module "public_ip" {
-#   depends_on = [ module.rg ]
-#   source     = "git:://https://github.com/dkchcl/azure-resource-modules.git"
-#   public_ips = var.public_ips
-# }
+module "public_ip" {
+  depends_on = [ module.rg ]
+  source     = "git:://https://github.com/dkchcl/azure-resource-modules.git//Modules/azurerm_public_ip"
+  public_ips = var.public_ips
+}
 
 # module "bastion_host" {
 #   depends_on = [ module.public_ip, module.subnet ]

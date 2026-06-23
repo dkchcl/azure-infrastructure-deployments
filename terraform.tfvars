@@ -36,15 +36,15 @@ subnets = {
   }
 }
 
-# public_ips = {
-#   "pip1" = {
-#     name                = "dev-pip-01"
-#     location            = "East US"
-#     resource_group_name = "dev-rg-01"
-#     allocation_method   = "Static"
-#     sku                 = "Standard"
-#   }
-# }
+public_ips = {
+  "pip1" = {
+    pip_name            = "dev-pip-01"
+    location            = "East US"
+    resource_group_name = "dev-rg-01"
+    allocation_method   = "Static"
+    sku                 = "Standard"
+  }
+}
 
 # bastion_hosts = {
 #   "bastion1" = {
