@@ -25,7 +25,7 @@ module "public_ip" {
 module "avm-res-compute-virtualmachine" {
   source  = "Azure/avm-res-compute-virtualmachine/azurerm"
   version = "0.21.0"
-  name = "avm-res-compute-virtualmachine"
+  name = "avm-res-vm1"
   location = "East US"
   resource_group_name = "dev-rg-01"
   zone = "1"
