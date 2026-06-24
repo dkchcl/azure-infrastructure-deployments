@@ -21,6 +21,21 @@ module "public_ip" {
   public_ips = var.public_ips
 }
 
+module "virtual-machine" {
+  depends_on = [ module.rg, module.subnet ]
+  source              = "Azure/virtual-machine/azurerm"
+  version             = "2.0.0"
+  name                = "avm-res-vm1"
+  location            = "East US"
+  resource_group_name = "dev-rg-01"
+  image_os            = "linux"
+  os_disk = {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+  size      = "Standard_B1s"
+  subnet_id = module.subnet.subnets["subnet1"].id
+}
 
 # module "avm-res-compute-virtualmachine" {
 #   source  = "Azure/avm-res-compute-virtualmachine/azurerm"
