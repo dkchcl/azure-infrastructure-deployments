@@ -1,3 +1,5 @@
+subscription_id = "e878567a-9df3-414b-a7d4-46f465efb83b"
+
 resource_groups = {
   "rg1" = {
     name     = "dev-rg-01"
